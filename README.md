@@ -1,6 +1,6 @@
 # Business Intelligence System for a Veterinary Clinic
 
-This BI System is created to assist the veterinarians employed in a veterinart clinic, in the decising-making process of what drugs / prescriptions should be avoided for the animals they are looking after.
+This BI System is created to assist the veterinarians employed in a veterinart clinic, in the decision-making process of what drugs / prescriptions should be avoided for the animals they are looking after.
 
 In order to run it in your machine the following steps must be followed
 
