@@ -38,7 +38,6 @@ UPDATE drugs SET dosage_form = 'Unkown' WHERE dosage_form IS NULL;
 #reactions
 reaction_commands = ("""
 UPDATE reactions SET veddra_version = 'Unknown' WHERE veddra_version = '';
-UPDATE reactions SET veddra_term_code = 'Unknown' WHERE veddra_term_code !=numeric;
 UPDATE reactions SET veddra_term_name = 'Unknown' WHERE veddra_term_name = '';
 """)
 
@@ -46,9 +45,7 @@ UPDATE reactions SET veddra_term_name = 'Unknown' WHERE veddra_term_name = '';
 #weight
 
 weight_commands = ("""
-DELETE FROM weight WHERE min = '';
 DELETE FROM weight WHERE min IS NULL;
-ALTER TABLE weight DROP COLUMN qualifier;
 ALTER TABLE weight DROP COLUMN unit;
 """)
 
@@ -67,9 +64,6 @@ ALTER TABLE duration DROP COLUMN unit;
 
 #age
 age_commands = ("""
-SELECT EXISTS (SELECT 1 
-FROM information_schema.columns 
-WHERE table_name='age_table' AND column_name='unit');
 DELETE FROM age WHERE unit !='Year';
 DELETE FROM age WHERE unit IS NULL;
 ALTER TABLE age DROP COLUMN unit;
@@ -92,7 +86,7 @@ UPDATE results SET original_receive_date = 'Unkown' WHERE original_receive_date 
 """)
 
 
-commands_list = [reaction_commands, weight_commands,duration_commands,
+commands_list = [dog_commands, animals_commands, drugs_commands, reaction_commands, weight_commands, duration_commands,
                  age_commands, health_assessment_prior_to_exposure_commands, results_commands]
 
 
@@ -113,4 +107,4 @@ def clean_tables():
         print(error)
 
 
-#clean_tables
+# clean_tables()
