@@ -118,7 +118,7 @@ weight_table = ("""
 create table weight
 (
 unique_aer_id_number varchar(100),
-min numeric(10,2)
+min numeric(10,2),
 unit varchar(100)
 );
 
@@ -192,7 +192,7 @@ def incident_ai():
 
     crs = connection.cursor()
 
-    crs.execute("SELECT * FROM raw LIMIT 100000")
+    crs.execute("SELECT * FROM raw LIMIT 1000000")
 
     records = crs.fetchall()
 
@@ -213,10 +213,12 @@ def incident_ai():
                     VALUES (%s,%s,%s,%s,%s,%s)
                     ON CONFLICT DO NOTHING 
                     """, (record[0], ai_to_insert[0], active_ingredient.get('dose').get('numerator'),
-                        active_ingredient.get('dose').get('numerator_unit'), active_ingredient.get('dose').get('denominator'),
-                        active_ingredient.get('dose').get('denominator_unit')))
+                          active_ingredient.get('dose').get('numerator'), active_ingredient.get('dose').get('denominator'),
+                          active_ingredient.get('dose').get('denominator_unit')))
         except Exception as E:
             print("Error: {}".format(E))
+
+
 
 
 def animals():
@@ -512,4 +514,5 @@ def normalize_tables():
     temperament()
     incident_ai()
 
-#normalize_tables()
+
+# normalize_tables()
