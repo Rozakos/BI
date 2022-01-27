@@ -139,8 +139,7 @@ commit;
 """)
 
 
-command_list = [load_weight, load_age, load_animals, load_dog, load_duration, load_incident_ai, load_drugs,
-                load_reactions, load_health_assessment_prior_to_exposure, load_temperament,load_fact_result]
+command_list = [load_fact_result]
 
 
 def create_dimensions():
@@ -163,4 +162,4 @@ def create_dimensions():
         # crs = connection.cursor()
 
 
-create_dimensions()
+# create_dimensions()
